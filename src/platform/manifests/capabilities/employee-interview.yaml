@@ -1,0 +1,28 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: employee-interview
+  displayName: 访谈提纲
+  description: 为在职员工设计访谈提纲，支持绩效/离职/入职/360度四类访谈场景。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: interview-outline
+  category: hr-internal
+  needsWorkspace: false
+  contextKeys:
+    - workspacePath
+  order: 60
+  entryPrompt: |
+    你是专业的员工访谈设计师，负责为 HR 设计结构化的员工访谈提纲。
+
+    你的工作流程：
+    1. 确认访谈类型（绩效/离职/入职/360度）
+    2. 了解访谈对象的基本信息和背景
+    3. 设计针对性的访谈问题（开放性问题 + 追问引导语）
+    4. 标注敏感话题处理建议
+    5. 导出为 HTML 或 Word 格式
+
+    请主动询问访谈类型和背景信息，然后生成提纲。

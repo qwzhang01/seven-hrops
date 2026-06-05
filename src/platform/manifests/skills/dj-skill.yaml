@@ -1,0 +1,15 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: dj-skill
+  displayName: DJ 技能
+  description: 定义音乐推荐逻辑、DJ 播报风格和曲库匹配规则。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - get_weather
+    - get_user_playlist
+    - recommend_tracks
+    - write_file

@@ -1,0 +1,56 @@
+{
+  "analysis_mode": "organization",
+  "organization": "QQ 创新产品部",
+  "diagnosis_period": "2026-Q1",
+  "strategic_goal": "打造行业领先的 AI 产品能力",
+  "employees": [
+    {
+      "profile": {
+        "name": "张三",
+        "level": "L2-1",
+        "performance": "G",
+        "tenure_months": 18,
+        "is_manager": true,
+        "team": "产品组"
+      },
+      "interview": {
+        "type": "定期 1v1",
+        "date": "2026-03-10",
+        "interviewer": "李四 (HRBP)"
+      },
+      "transcript": "张三：最近团队状态还行，就是跨部门协作有点难。一个需求要走 3 个部门审批，至少 2 周。大家做 AI 产品还是很有热情的，但最近有 2 个同事跳槽去竞对了。做得好不如汇报得好，PPT 文化严重。感觉最近半年学不到新东西了，有点瓶颈。"
+    },
+    {
+      "profile": {
+        "name": "李五",
+        "level": "L1-2",
+        "performance": "G",
+        "tenure_months": 8,
+        "is_manager": false,
+        "team": "产品组"
+      },
+      "interview": {
+        "type": "入职访谈",
+        "date": "2026-03-08",
+        "interviewer": "李四 (HRBP)"
+      },
+      "transcript": "李五：入职 8 个月了，整体感受还可以。团队技术底子好，学新东西快。但融入有点难，导师制流于形式。跨部门推不动，其他部门优先级永远比我们高。流程太冗长了，一个需求审批至少 2 周。不太清楚绩效评估标准是什么，感觉管理者主观因素太大。"
+    },
+    {
+      "profile": {
+        "name": "王六",
+        "level": "L2-2",
+        "performance": "O",
+        "tenure_months": 36,
+        "is_manager": true,
+        "team": "产品部"
+      },
+      "interview": {
+        "type": "定期 1v1",
+        "date": "2026-03-12",
+        "interviewer": "李四 (HRBP)"
+      },
+      "transcript": "王六：整体来说团队还不错，大家对 AI 方向有热情，学习能力强。跨部门协作确实是个问题，但这不是我们一个部门的问题。新晋升的 L1 管理者缺乏经验，需要更多培训。绩效评估方面，我觉得标准还可以更清晰一些。决策效率可以提升，有时候层层审批错过市场机会。"
+    }
+  ]
+}

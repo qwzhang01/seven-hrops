@@ -1,0 +1,267 @@
+{
+  "$comment": "AUTO-GENERATED — DO NOT EDIT. Run `pnpm run codegen` to regenerate from src-tauri/src/manifest/*.rs",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Metadata": {
+      "additionalProperties": false,
+      "description": "Shared metadata across all three manifest kinds.",
+      "properties": {
+        "author": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authorEmail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deprecated": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "deprecatedReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "homepage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "icon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "signature": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "description",
+        "displayName",
+        "name",
+        "source",
+        "version"
+      ],
+      "type": "object"
+    },
+    "SkillInput": {
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "required": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "type"
+      ],
+      "type": "object"
+    },
+    "SkillKindTag": {
+      "enum": [
+        "Skill"
+      ],
+      "type": "string"
+    },
+    "SkillLoadStrategy": {
+      "enum": [
+        "eager",
+        "lazy"
+      ],
+      "type": "string"
+    },
+    "SkillOutputs": {
+      "properties": {
+        "schema": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "SkillSpec": {
+      "properties": {
+        "applicableAgents": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "applicableCapabilities": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/definitions/SkillInput"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "loadStrategy": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/SkillLoadStrategy"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outputs": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/SkillOutputs"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "requiredSkills": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "requiredTools": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "resources": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "triggerKeywords": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "requiredTools"
+      ],
+      "type": "object"
+    },
+    "Source": {
+      "description": "Source of a manifest — controls sandbox fast-path and tool whitelist.",
+      "enum": [
+        "builtin",
+        "user",
+        "marketplace"
+      ],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "body": {
+      "description": "SKILL.md body (Markdown). Optional — sidecar `.SKILL.md` file overrides.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "$ref": "#/definitions/SkillKindTag"
+    },
+    "metadata": {
+      "$ref": "#/definitions/Metadata"
+    },
+    "spec": {
+      "$ref": "#/definitions/SkillSpec"
+    }
+  },
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "title": "SkillManifest",
+  "type": "object"
+}

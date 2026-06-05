@@ -1,0 +1,96 @@
+{
+  "scenario": "recruitment",
+  "candidate": {
+    "name": "张三",
+    "current_company": "某互联网公司",
+    "current_position": "高级产品经理",
+    "work_years": 5,
+    "education": {
+      "school": "北京大学",
+      "major": "计算机科学与技术",
+      "degree": "本科",
+      "graduation_year": 2019
+    },
+    "work_experience": [
+      {
+        "company": "某互联网公司",
+        "position": "高级产品经理",
+        "duration": "2022.03 - 至今",
+        "responsibilities": [
+          "负责 AI 产品线的产品规划和迭代",
+          "带领 5 人产品团队，协调研发、设计、运营",
+          "主导 3 个从 0 到 1 的 AI 产品项目"
+        ],
+        "achievements": [
+          "AI 助手产品 DAU 从 0 增长到 50 万",
+          "用户留存率提升 30%",
+          "获得公司年度创新奖"
+        ]
+      },
+      {
+        "company": "某创业公司",
+        "position": "产品经理",
+        "duration": "2019.07 - 2022.02",
+        "responsibilities": [
+          "负责移动端 APP 的产品设计",
+          "用户需求调研和竞品分析"
+        ],
+        "achievements": [
+          "APP 从 0 到 1 上线，获 10 万用户",
+          "用户满意度 4.5/5.0"
+        ]
+      }
+    ],
+    "skills": [
+      "产品设计",
+      "用户研究",
+      "数据分析",
+      "AI/ML 产品经验",
+      "团队管理"
+    ],
+    "motivation": "寻求更大的发展平台，希望参与更复杂的 AI 产品项目"
+  },
+  "job": {
+    "title": "AI 产品专家",
+    "department": "AI 产品部",
+    "report_to": "AI 产品总监",
+    "level": "P7",
+    "responsibilities": [
+      "负责 AI 产品线的战略规划和技术路线",
+      "带领产品团队完成产品创新和迭代",
+      "跨部门协调资源，推动产品落地"
+    ],
+    "requirements": {
+      "must_have": [
+        "5 年以上互联网产品经验",
+        "有 AI/ML 产品经验",
+        "独立负责过完整产品生命周期",
+        "优秀的沟通和协调能力"
+      ],
+      "nice_to_have": [
+        "技术背景（计算机相关专业）",
+        "有从 0 到 1 产品经验",
+        "带团队经验"
+      ]
+    },
+    "competency_model": {
+      "product_thinking": "产品思维和战略眼光",
+      "technical_understanding": "AI 技术理解力",
+      "leadership": "团队领导和影响力",
+      "execution": "执行力和结果导向"
+    }
+  },
+  "interview": {
+    "round": "业务面",
+    "round_number": 2,
+    "interviewer_role": "直接上级（AI 产品总监）",
+    "duration_minutes": 60,
+    "format": "线下面试",
+    "focus_areas": [
+      "AI 产品专业能力",
+      "项目管理经验",
+      "团队领导潜力",
+      "文化匹配度"
+    ]
+  }
+}

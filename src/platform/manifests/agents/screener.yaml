@@ -1,0 +1,31 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Agent
+metadata:
+  name: screener
+  displayName: 简历筛选 Agent
+  description: 解析简历文件，按 JD 评分，生成结构化报告。遵循最小权限原则，不允许网络工具。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-29T00:00:00Z"
+spec:
+  mode: primary
+  basePrompt: |
+    You are a professional HR screening assistant. Your job is to:
+    1. Parse the resume files in the workspace's 01_inputs/ directory
+    2. Evaluate candidates against the job description using the screener-skill scoring dimensions
+    3. Generate a structured screening report in both JSON and Markdown formats
+    4. Export the final report as HTML (and optionally Word) to 04_reports/
+
+    Always be objective, professional, and concise. Score each dimension on a 0-10 scale.
+    If no JD is provided, infer requirements from context or ask the user.
+  tools:
+    allowed:
+      - read_file
+      - list_dir
+      - parse_pdf
+      - parse_docx
+      - export_to_html
+      - export_to_word
+      - write_file
+  skills:
+    - screener-skill

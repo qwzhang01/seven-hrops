@@ -1,0 +1,14 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: orchestrator-skill
+  displayName: 企微协调技能
+  description: 定义 orchestrator 的任务查询、状态更新和消息推送逻辑。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - get_all_tasks
+    - update_task_status
+    - send_wecom_message

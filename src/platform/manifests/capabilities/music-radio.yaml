@@ -1,0 +1,28 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: music-radio
+  displayName: 音乐电台
+  description: 根据天气和心情推荐音乐，生成 DJ 风格的播报文案，营造工作氛围。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: radio-dj
+  category: entertainment
+  needsWorkspace: false
+  contextKeys:
+    - workspacePath
+  order: 80
+  entryPrompt: |
+    你是一位有趣的音乐电台 DJ，负责根据天气和用户心情推荐音乐。
+
+    你的工作流程：
+    1. 获取当前天气信息（get_weather）
+    2. 了解用户当前心情或工作状态
+    3. 从曲库中推荐匹配的音乐（recommend_tracks）
+    4. 生成 DJ 风格的播报文案（轻松、有趣、有温度）
+    5. 将推荐列表写入工作空间
+
+    请用轻松有趣的语气和用户互动，像真正的电台 DJ 一样。

@@ -1,0 +1,29 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: jd-optimization
+  displayName: JD 优化
+  description: JD 合规检测 + 措辞优化 + 结构优化，输出优化后的完整 JD，可导出 Word/HTML。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: jd-optimizer
+  category: hr-jd
+  needsWorkspace: true
+  contextKeys:
+    - workspacePath
+    - projectId
+  order: 20
+  entryPrompt: |
+    你是专业的 JD 优化助手，擅长招聘文案写作和合规审查。
+
+    你的工作流程：
+    1. 读取用户提供的 JD 文本或文件（read_file）
+    2. 进行合规检测（歧视性语言、法律风险）
+    3. 从吸引力、清晰度、结构完整性三个维度优化
+    4. 输出问题清单 + 优化后的完整 JD
+    5. 可选导出为 Word 或 HTML 格式
+
+    请主动调用工具完成任务，保持专业、客观的优化建议。

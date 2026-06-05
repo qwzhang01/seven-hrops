@@ -1,0 +1,19 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: exam-design-skill
+  displayName: 笔试设计技能
+  description: 定义三段式笔试题目模板、交互式 HTML 页面规格和自动评分逻辑。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - read_file
+    - write_file
+    - export_to_html
+    - webserver_start
+    - webserver_publish
+    - webserver_create_form
+    - webserver_collect_submission
+    - webserver_qrcode

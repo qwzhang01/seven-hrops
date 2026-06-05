@@ -1,0 +1,13 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: assistant-skill
+  displayName: 智能路由技能
+  description: 定义 assistant 的意图识别与能力路由逻辑。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - activate_capability
+    - delegate_to_subagent

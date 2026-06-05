@@ -1,0 +1,283 @@
+{
+  "$comment": "AUTO-GENERATED — DO NOT EDIT. Run `pnpm run codegen` to regenerate from src-tauri/src/manifest/*.rs",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "CapabilityCategory": {
+      "description": "HR-domain category enumeration.\n\nKeep parity with `manifestSchema.ts`'s `CapabilityCategory` literal union.",
+      "enum": [
+        "hr-screening",
+        "hr-jd",
+        "hr-interview",
+        "hr-report",
+        "hr-internal",
+        "productivity",
+        "entertainment",
+        "system",
+        "custom"
+      ],
+      "type": "string"
+    },
+    "CapabilityInputField": {
+      "properties": {
+        "default": {
+          "description": "`default` is `unknown` in TS — we keep it as serde_json::Value for parity."
+        },
+        "key": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string"
+        },
+        "options": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "label",
+        "type"
+      ],
+      "type": "object"
+    },
+    "CapabilityKindTag": {
+      "enum": [
+        "Capability"
+      ],
+      "type": "string"
+    },
+    "CapabilitySpec": {
+      "properties": {
+        "agentName": {
+          "type": "string"
+        },
+        "badge": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category": {
+          "$ref": "#/definitions/CapabilityCategory"
+        },
+        "color": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "contextKeys": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "entryPrompt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "inputSchema": {
+          "items": {
+            "$ref": "#/definitions/CapabilityInputField"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "order": {
+          "format": "int32",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "quickReplies": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "visibility": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/CapabilityVisibility"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "agentName",
+        "category",
+        "contextKeys"
+      ],
+      "type": "object"
+    },
+    "CapabilityVisibility": {
+      "properties": {
+        "enabled": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "requiredFeatureFlags": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "requiredRoles": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "Metadata": {
+      "additionalProperties": false,
+      "description": "Shared metadata across all three manifest kinds.",
+      "properties": {
+        "author": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authorEmail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deprecated": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "deprecatedReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "homepage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "icon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "signature": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "description",
+        "displayName",
+        "name",
+        "source",
+        "version"
+      ],
+      "type": "object"
+    },
+    "Source": {
+      "description": "Source of a manifest — controls sandbox fast-path and tool whitelist.",
+      "enum": [
+        "builtin",
+        "user",
+        "marketplace"
+      ],
+      "type": "string"
+    }
+  },
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "$ref": "#/definitions/CapabilityKindTag"
+    },
+    "metadata": {
+      "$ref": "#/definitions/Metadata"
+    },
+    "spec": {
+      "$ref": "#/definitions/CapabilitySpec"
+    }
+  },
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "title": "CapabilityManifest",
+  "type": "object"
+}

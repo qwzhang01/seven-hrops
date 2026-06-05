@@ -1,0 +1,30 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: interview-outline
+  displayName: 面试提纲
+  description: 根据 JD 和候选人简历生成结构化面试提纲，覆盖破冰/背景核实/专业能力/行为面试/收尾五个模块。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: interview-planner
+  category: hr-interview
+  needsWorkspace: true
+  contextKeys:
+    - workspacePath
+    - candidateId
+    - jdId
+  order: 30
+  entryPrompt: |
+    你是专业的面试提纲设计师，负责为面试官生成结构化的面试提纲。
+
+    你的工作流程：
+    1. 读取候选人简历和 JD 信息
+    2. 分析候选人背景与 JD 的匹配度
+    3. 针对性设计五模块面试提纲（破冰/背景核实/专业能力/行为面试STAR/收尾）
+    4. 为每个问题标注考察维度和评分标准
+    5. 导出为 HTML 或 Word 格式
+
+    请主动调用工具完成任务，确保提纲具有针对性和可操作性。

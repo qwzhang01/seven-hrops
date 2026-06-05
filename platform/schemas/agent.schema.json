@@ -1,0 +1,452 @@
+{
+  "$comment": "AUTO-GENERATED — DO NOT EDIT. Run `pnpm run codegen` to regenerate from src-tauri/src/manifest/*.rs",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AgentCapabilityBinding": {
+      "properties": {
+        "autoCreate": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "capabilityId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "capabilityId"
+      ],
+      "type": "object"
+    },
+    "AgentFilesystem": {
+      "properties": {
+        "readPaths": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "writePaths": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "AgentInheritFrom": {
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "overrides": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "name",
+        "overrides"
+      ],
+      "type": "object"
+    },
+    "AgentKindTag": {
+      "enum": [
+        "Agent"
+      ],
+      "type": "string"
+    },
+    "AgentMode": {
+      "description": "Discriminator for agent execution mode.",
+      "enum": [
+        "primary",
+        "subagent"
+      ],
+      "type": "string"
+    },
+    "AgentModelConfig": {
+      "properties": {
+        "maxTokens": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "modelID": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "temperature": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "topP": {
+          "format": "double",
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "modelID",
+        "provider"
+      ],
+      "type": "object"
+    },
+    "AgentNetwork": {
+      "properties": {
+        "allowedHosts": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "allowedHosts"
+      ],
+      "type": "object"
+    },
+    "AgentResources": {
+      "properties": {
+        "maxConcurrentSessions": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "maxTokensPerSession": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "maxToolCallsPerMinute": {
+          "format": "uint32",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      },
+      "type": "object"
+    },
+    "AgentSpec": {
+      "properties": {
+        "basePrompt": {
+          "type": "string"
+        },
+        "capabilityBinding": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentCapabilityBinding"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contextKeys": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "contextTemplate": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "filesystem": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentFilesystem"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inheritFrom": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentInheritFrom"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "mode": {
+          "$ref": "#/definitions/AgentMode"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentModelConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "network": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentNetwork"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "permission": {
+          "items": {
+            "$ref": "#/definitions/PermissionRule"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "resources": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AgentResources"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "skills": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "tools": {
+          "$ref": "#/definitions/AgentTools"
+        }
+      },
+      "required": [
+        "basePrompt",
+        "mode",
+        "tools"
+      ],
+      "type": "object"
+    },
+    "AgentTools": {
+      "properties": {
+        "allowed": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "autoApprove": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "deny": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "allowed"
+      ],
+      "type": "object"
+    },
+    "Metadata": {
+      "additionalProperties": false,
+      "description": "Shared metadata across all three manifest kinds.",
+      "properties": {
+        "author": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authorEmail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string"
+        },
+        "deprecated": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "deprecatedReason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "homepage": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "icon": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "signature": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "$ref": "#/definitions/Source"
+        },
+        "tags": {
+          "items": {
+            "type": "string"
+          },
+          "type": [
+            "array",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "createdAt",
+        "description",
+        "displayName",
+        "name",
+        "source",
+        "version"
+      ],
+      "type": "object"
+    },
+    "PermissionAction": {
+      "enum": [
+        "allow",
+        "deny",
+        "ask"
+      ],
+      "type": "string"
+    },
+    "PermissionRule": {
+      "description": "Permission rule — shared by Agent and certain Skills.",
+      "properties": {
+        "action": {
+          "$ref": "#/definitions/PermissionAction"
+        },
+        "pattern": {
+          "type": "string"
+        },
+        "permission": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "pattern",
+        "permission"
+      ],
+      "type": "object"
+    },
+    "Source": {
+      "description": "Source of a manifest — controls sandbox fast-path and tool whitelist.",
+      "enum": [
+        "builtin",
+        "user",
+        "marketplace"
+      ],
+      "type": "string"
+    }
+  },
+  "description": "Top-level Agent manifest object.\n\nNote: `kind` is hard-coded to `\"Agent\"` via `tag = \"kind\"` on `AnyManifest`, but here in the standalone struct we still serialize it explicitly so a stand-alone `agent.yaml` round-trips faithfully.",
+  "properties": {
+    "apiVersion": {
+      "type": "string"
+    },
+    "kind": {
+      "$ref": "#/definitions/AgentKindTag"
+    },
+    "metadata": {
+      "$ref": "#/definitions/Metadata"
+    },
+    "spec": {
+      "$ref": "#/definitions/AgentSpec"
+    }
+  },
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "title": "AgentManifest",
+  "type": "object"
+}

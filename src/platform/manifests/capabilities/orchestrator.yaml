@@ -1,0 +1,17 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: orchestrator
+  displayName: 企微协调器
+  description: 企微 webhook 入站桥 — 接收外部消息并协调内部能力完成任务，不在 UI 中显示。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: orchestrator
+  category: system
+  needsWorkspace: false
+  contextKeys: []
+  order: 99
+  hidden: true

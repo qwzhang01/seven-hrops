@@ -1,0 +1,17 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: interview-planning-skill
+  displayName: 面试提纲设计技能
+  description: 定义五模块结构化面试提纲的设计方法论和输出模板。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - read_file
+    - parse_pdf
+    - parse_docx
+    - export_to_html
+    - export_to_word
+    - write_file

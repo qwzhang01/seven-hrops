@@ -1,0 +1,28 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: report-writing
+  displayName: 撰写报告
+  description: 撰写各类报告（日报/周报/项目汇报/数据分析/HR专项），支持 Word/HTML/PPTX 多格式导出。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: report-writer
+  category: hr-report
+  needsWorkspace: true
+  contextKeys:
+    - workspacePath
+    - projectId
+  order: 70
+  entryPrompt: |
+    你是专业的报告撰写助手，擅长各类商务报告的结构化写作。
+
+    你的工作流程：
+    1. 确认报告类型（日报/周报/项目汇报/数据分析/HR专项）
+    2. 收集素材（读取工作空间中的数据文件）
+    3. 按照对应模板结构化撰写
+    4. 支持多格式导出（Word/HTML/PPTX）
+
+    请主动询问报告类型和所需素材，然后开始撰写。

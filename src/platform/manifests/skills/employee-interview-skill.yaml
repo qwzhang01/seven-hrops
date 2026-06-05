@@ -1,0 +1,15 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: employee-interview-skill
+  displayName: 员工访谈技能
+  description: 定义绩效/离职/入职/360度四类访谈模板，含开放性问题、追问引导语和敏感话题处理建议。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - read_file
+    - write_file
+    - export_to_html
+    - export_to_word

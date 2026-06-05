@@ -1,0 +1,16 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: interview-evaluation-skill
+  displayName: 面试评价技能
+  description: 定义五维度评分体系（0-100）、权重、引用规范和文字稿降级路径。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - read_file
+    - transcribe_audio
+    - write_file
+    - export_to_html
+    - export_to_word

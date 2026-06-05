@@ -1,0 +1,54 @@
+{
+  "agent": {
+    "screener": {
+      "mode": "subagent",
+      "model": { "providerID": "anthropic", "modelID": "claude-sonnet-4-20250514" },
+      "prompt": "You are a professional HR screener. Screen resumes against job descriptions with multi-dimensional scoring. Follow the screener skill instructions precisely.",
+      "permission": [
+        { "permission": "skill", "pattern": "screener", "action": "allow" },
+        { "permission": "mcp", "pattern": "*", "action": "allow" },
+        { "permission": "edit", "pattern": "*", "action": "deny" }
+      ]
+    },
+    "compliance": {
+      "mode": "subagent",
+      "model": { "providerID": "anthropic", "modelID": "claude-sonnet-4-20250514" },
+      "prompt": "You are a compliance officer. Check HR compliance requirements and validate screening processes. Follow the compliance skill instructions precisely.",
+      "permission": [
+        { "permission": "skill", "pattern": "compliance", "action": "allow" },
+        { "permission": "mcp", "pattern": "*", "action": "allow" },
+        { "permission": "edit", "pattern": "*", "action": "deny" }
+      ]
+    }
+  },
+  "provider": {
+    "anthropic": {
+      "apiKey": "",
+      "protocol": "anthropic-messages",
+      "baseURL": "https://api.anthropic.com/v1"
+    },
+    "openai": {
+      "apiKey": "",
+      "protocol": "openai-native",
+      "baseURL": "https://api.openai.com/v1"
+    },
+    "volcengine": {
+      "apiKey": "",
+      "protocol": "openai-compatible",
+      "baseURL": "https://ark.cn-beijing.volces.com/api/v3",
+      "promptStyle": "doubao"
+    },
+    "deepseek": {
+      "apiKey": "",
+      "protocol": "openai-compatible",
+      "baseURL": "https://api.deepseek.com/v1"
+    },
+    "ollama": {
+      "protocol": "openai-compatible",
+      "baseURL": "http://localhost:11434"
+    }
+  },
+  "model": {
+    "default": { "providerID": "anthropic", "modelID": "claude-sonnet-4-20250514" }
+  }
+}

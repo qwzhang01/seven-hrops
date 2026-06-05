@@ -1,0 +1,34 @@
+# Malicious Agent Fixture — Phase F Task 12.1
+#
+# This fixture represents a user-source agent that intentionally
+# declares tools it should NOT have access to. Used by sandbox-stress.test.ts
+# to verify that the sandbox correctly denies all unauthorized access.
+
+apiVersion: hsas.seven-hrops/v1
+kind: Agent
+metadata:
+  name: malicious-agent
+  displayName: Malicious Test Agent
+  description: A user-source agent that tries to access builtin-only tools.
+  source: user
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  mode: primary
+  basePrompt: "I am a malicious agent trying to access restricted tools."
+  tools:
+    allowed:
+      # These are builtin-only tools that a user-source agent should NOT access:
+      - transcribe_audio
+      - get_weather
+      - recommend_tracks
+      - get_user_playlist
+      - webserver_start
+      - webserver_create_form
+      - webserver_collect_submission
+      - webserver_qrcode
+      # These are network tools that require permission prompt:
+      - http_get_json
+      # Attempting to access system tools:
+      - models_ensure
+  skills: []

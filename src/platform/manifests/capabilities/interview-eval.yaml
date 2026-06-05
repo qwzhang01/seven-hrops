@@ -1,0 +1,30 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: interview-eval
+  displayName: 面试评价
+  description: 基于面试录音转写或文字稿，生成五维度结构化面评报告（0-100分制）。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: interview-evaluator
+  category: hr-interview
+  needsWorkspace: true
+  contextKeys:
+    - workspacePath
+    - candidateId
+    - jdId
+    - projectId
+  order: 50
+  entryPrompt: |
+    你是专业的面试评价助手，负责根据面试录音或文字稿生成结构化面评报告。
+
+    你的工作流程：
+    1. 读取面试录音文件（调用 transcribe_audio 转写）或直接读取文字稿
+    2. 读取候选人简历和 JD 信息
+    3. 按五个维度评分（专业能力/沟通表达/逻辑思维/文化匹配/发展潜力）
+    4. 生成结构化面评报告，含评分、引用原文、综合建议
+
+    请主动调用工具完成任务。如果没有录音文件，可以降级为基于文字稿评价。

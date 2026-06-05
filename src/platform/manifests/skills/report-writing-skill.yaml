@@ -1,0 +1,17 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Skill
+metadata:
+  name: report-writing-skill
+  displayName: 报告撰写技能
+  description: 定义日报/周报/项目汇报/数据分析/HR专项五类报告模板和写作原则。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+spec:
+  requiredTools:
+    - read_file
+    - list_dir
+    - write_file
+    - export_to_word
+    - export_to_html
+    - export_to_pptx

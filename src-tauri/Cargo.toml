@@ -1,0 +1,112 @@
+[package]
+name = "seven-hrops"
+version = "0.1.0"
+description = "Seven: HROps — AI-Powered Recruitment Intelligence Platform"
+authors = ["Seven"]
+edition = "2021"
+
+default-run = "seven-hrops"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "seven_hrops_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["unstable"] }
+tauri-plugin-opener = "2"
+# tauri-plugin-sql removed: DB access moved to Rust (rusqlite)
+# See openspec/changes/arch-db-rust-only/ for design rationale.
+tauri-plugin-fs = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-dialog = "2"
+tauri-plugin-notification = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+chrono = { version = "0.4", features = ["serde"] }
+uuid = { version = "1", features = ["v4"] }
+log = "0.4"
+env_logger = "0.11"
+# SQLite (bundled) — used by the `db` module for all DB access.
+rusqlite = { version = "0.31", features = ["bundled"] }
+axum = { version = "0.7", features = ["ws"] }
+tokio = { version = "1", features = ["full"] }
+tower-http = { version = "0.5", features = ["fs", "cors"] }
+url = "2"
+
+# Email client dependencies
+lettre = { version = "0.11", features = ["tokio1", "tokio1-native-tls", "smtp-transport", "builder"] }
+imap = { version = "3.0.0-alpha.15", features = ["native-tls"] }
+native-tls = "0.2"
+oauth2 = "4"
+keyring = { version = "3", features = ["async-secret-service"] }
+base64 = "0.22"
+mailparse = "0.15"
+
+# -----------------------------------------------------------------------------
+# Phase B — Platform Foundation (added 2026-05-28)
+# -----------------------------------------------------------------------------
+
+# Manifest single-source codegen (Rust struct -> JSON Schema -> TS types)
+# TS types are produced by `pnpm run codegen:types` (json-schema-to-typescript)
+# from the JSON Schema files emitted here. We deliberately do NOT use ts-rs:
+# its serde-attr parser fails on combined attributes (rename + skip_serializing_if + default)
+# and `export_all` cannot aggregate into a single output file. See design.md Decision 3.
+schemars = { version = "0.8", features = ["chrono", "uuid1"] }
+serde_yaml = "0.9"
+jsonschema = { version = "0.18", default-features = false }
+
+# Sandbox / runtime utilities
+once_cell = "1"
+anyhow = "1"
+thiserror = "1"
+dirs = "5"
+parking_lot = "0.12"
+dashmap = "6"
+
+# Model distribution: reqwest streaming + sha256 + futures
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "stream", "json"] }
+sha2 = "0.10"
+hmac = "0.12"
+futures-util = "0.3"
+hex = "0.4"
+
+# Webserver toolpack: QR code generation
+qrcode = { version = "0.14", default-features = false, features = ["image"] }
+image = { version = "0.25", default-features = false, features = ["png"] }
+
+# Document parsing (B.2 stub阶段先声明，FFI(pdfium/whisper) 推迟到 B.9)
+calamine = "0.26"
+docx-rs = "0.4"
+
+# Phase B.9 — FFI 真实接入（可选依赖，仅 ffi-real feature 启用时编译）
+# pdfium-render: 动态加载 libpdfium.dylib / pdfium.dll，不静态链接
+pdfium-render = { version = "0.9.1", optional = true }
+# whisper-rs: whisper.cpp Rust bindings，需要本地 cmake + ninja 构建 whisper.cpp
+whisper-rs = { version = "0.11", optional = true }
+# hound: WAV 读取（ffi-real 下给 transcribe_audio 用）
+hound = { version = "3", optional = true }
+
+# Tauri event emit for models://progress
+[features]
+default = ["ffi-real"] 
+# B.9 启用后接入 whisper-rs / pdfium-render 真实实现
+# 启用方式: cargo build --features ffi-real
+ffi-real = ["dep:pdfium-render", "whisper-rs", "hound"]
+
+[[bin]]
+name = "gen_manifest_schema"
+path = "src/bin/gen_manifest_schema.rs"
+
+[dev-dependencies]
+# Phase B Task 3.x: webserver / transcribe 单测需要 mock AppHandle
+tauri = { version = "2", features = ["test"] }
+# Temp directory helper for tests
+tempfile = "3"

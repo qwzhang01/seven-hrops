@@ -1,0 +1,22 @@
+{
+  "analysis_mode": "individual",
+  "employee": {
+    "profile": {
+      "name": "张三",
+      "level": "L2-1",
+      "performance": "G",
+      "tenure_months": 18,
+      "is_manager": true,
+      "team": "产品组",
+      "tags": ["高潜", "项目驱动型"]
+    },
+    "interview": {
+      "type": "定期 1v1",
+      "date": "2026-03-10",
+      "interviewer": "李四 (HRBP)",
+      "duration_minutes": 60,
+      "framework_used": "employee-interview-generator v2.4 (L2-1 管理者版)"
+    },
+    "transcript": "张三：最近团队状态还行，就是跨部门协作有点难。一个需求要走 3 个部门审批，至少 2 周，等批完黄花菜都凉了。\n\n访谈者：能具体说说吗？\n\n张三：比如我们做个 AI 功能，需要算法、工程、测试配合，每个部门都有自己的优先级，我们的需求永远排不到前面。而且决策链太长，小功能都要向上请示好几层。\n\n访谈者：团队士气怎么样？\n\n张三：大家做 AI 产品还是很有热情的，觉得有成就感。但最近有 2 个同事跳槽去竞对了，说实话我也有点动摇。做得好不如汇报得好，PPT 文化严重。\n\n访谈者：个人发展方面呢？\n\n张三：感觉最近半年学不到新东西了，有点瓶颈。而且从 L1 晋升到 L2 后，不知道怎么带团队，缺乏系统培训。有时候觉得很疲惫，想休息一段时间。"
+  }
+}

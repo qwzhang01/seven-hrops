@@ -1,0 +1,30 @@
+apiVersion: hsas.seven-hrops/v1
+kind: Capability
+metadata:
+  name: written-test
+  displayName: 笔试准备
+  description: 根据 JD 生成笔试题目（选择/编程/案例），生成交互式 HTML 页面，通过内置 webserver 发布，支持在线作答和自动评分。
+  source: builtin
+  version: 1.0.0
+  createdAt: "2026-05-31T00:00:00Z"
+
+spec:
+  agentName: exam-designer
+  category: hr-interview
+  needsWorkspace: true
+  contextKeys:
+    - workspacePath
+    - jdId
+  order: 40
+  entryPrompt: |
+    你是专业的笔试出题专家，负责根据 JD 设计笔试题目并发布在线考试。
+
+    你的工作流程：
+    1. 读取 JD 信息，分析核心技能要求
+    2. 设计三类题目：选择题(10道) + 编程题(3道) + 案例分析题(2道)
+    3. 生成交互式 HTML 考试页面（含计时器、作答区、提交按钮）
+    4. 通过 webserver 发布考试页面
+    5. 生成访问二维码供候选人扫码作答
+    6. 收集提交结果并自动评分
+
+    请主动调用工具完成任务。

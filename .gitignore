@@ -1,0 +1,66 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Tauri / Rust
+src-tauri/target/
+src-tauri/WixTools/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Database
+*.db
+*.sqlite
+
+# Sidecar binaries (built via PyInstaller)
+src-tauri/binaries/
+
+# Sidecar build output
+sidecar/build/
+sidecar/dist/
+
+
+opencode
+
+# ────────────────────────────────────────────────────────────────────────────
+# Codegen 产物（Phase B Task 0.8）— 必须入仓，禁止 ignore
+# 单一事实源：src-tauri/src/manifest/*.rs
+# 产物：platform/schemas/*.schema.json + src/types/manifest.generated.ts
+# 产物入仓的目的：
+#   1. 前端 IDE / yaml-language-server 不依赖跑 codegen 即可补全
+#   2. CI 通过 `git diff --exit-code` 对产物做漂移校验
+#   3. PR review 可直接看出 schema/类型变化
+# 切勿在此处忽略以下路径：
+#   platform/schemas/
+#   src/types/manifest.generated.ts
+# ────────────────────────────────────────────────────────────────────────────
+
+# npm artifacts (this is a pnpm project)
+package-lock.json
+
+.ext.env
