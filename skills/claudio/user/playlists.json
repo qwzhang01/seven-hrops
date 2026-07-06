@@ -1,0 +1,32 @@
+{
+  "morning_wake": {
+    "name": "晨间唤醒",
+    "description": "轻柔开始新的一天",
+    "tracks": []
+  },
+  "focus_work": {
+    "name": "专注工作",
+    "description": "不打扰的背景音乐",
+    "tracks": []
+  },
+  "commute_energy": {
+    "name": "通勤能量",
+    "description": "有节奏感的通勤伴侣",
+    "tracks": []
+  },
+  "chill_evening": {
+    "name": "傍晚放松",
+    "description": "一天结束时的放松",
+    "tracks": []
+  },
+  "sleep_ambient": {
+    "name": "睡前氛围",
+    "description": "帮助入睡的氛围音乐",
+    "tracks": []
+  },
+  "rainy_day": {
+    "name": "雨天爵士",
+    "description": "下雨天的专属",
+    "tracks": []
+  }
+}

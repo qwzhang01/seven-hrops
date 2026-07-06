@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>MusicAgent - 你的私人 AI DJ</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- 顶部状态栏 -->
+    <header class="header">
+      <div class="header-left">
+        <span class="logo">🎵</span>
+        <span class="app-name">MusicAgent</span>
+      </div>
+      <div class="header-right">
+        <span class="connection-status" id="connStatus">●</span>
+      </div>
+    </header>
+
+    <!-- 主内容区 - 三视图切换 -->
+    <main class="main-content">
+      <!-- Player 视图 -->
+      <section class="view view-player active" id="viewPlayer">
+        <!-- DJ 播报区 -->
+        <div class="dj-broadcast" id="djBroadcast">
+          <div class="dj-avatar">🎧</div>
+          <div class="dj-message" id="djMessage">
+            <p>你好！我是你的私人 AI DJ。</p>
+            <p>告诉我你现在的心情，或者直接让我推荐音乐吧。</p>
+          </div>
+        </div>
+
+        <!-- 当前播放 -->
+        <div class="now-playing" id="nowPlaying">
+          <div class="album-art" id="albumArt">
+            <div class="album-placeholder">♪</div>
+          </div>
+          <div class="song-info">
+            <h2 class="song-title" id="songTitle">等待播放...</h2>
+            <p class="song-artist" id="songArtist">--</p>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="time-display">
+            <span id="currentTime">0:00</span>
+            <span id="totalTime">0:00</span>
+          </div>
+        </div>
+
+        <!-- 播放控制 -->
+        <div class="controls">
+          <button class="btn-control" id="btnPrev" title="上一首">⏮</button>
+          <button class="btn-control btn-play" id="btnPlay" title="播放/暂停">▶</button>
+          <button class="btn-control" id="btnNext" title="下一首">⏭</button>
+        </div>
+
+        <!-- 播放队列 -->
+        <div class="queue-section">
+          <h3 class="section-title">播放队列</h3>
+          <div class="queue-list" id="queueList">
+            <div class="empty-state">还没有歌曲，和 AI DJ 聊聊吧</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Profile 视图 -->
+      <section class="view view-profile" id="viewProfile">
+        <div class="profile-header">
+          <h2>我的音乐档案</h2>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-number" id="statToday">0</span>
+            <span class="stat-label">今日播放</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number" id="statTotal">0</span>
+            <span class="stat-label">累计播放</span>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>最近播放</h3>
+          <div class="history-list" id="historyList">
+            <div class="empty-state">暂无播放记录</div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>最爱艺术家</h3>
+          <div class="artists-list" id="artistsList">
+            <div class="empty-state">听得越多越了解你</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Settings 视图 -->
+      <section class="view view-settings" id="viewSettings">
+        <div class="settings-header">
+          <h2>设置</h2>
+        </div>
+
+        <div class="settings-group">
+          <h3>品味偏好</h3>
+          <textarea class="taste-editor" id="tasteEditor" placeholder="描述你的音乐品味..."></textarea>
+          <button class="btn-save" id="btnSaveTaste">保存品味</button>
+        </div>
+
+        <div class="settings-group">
+          <h3>DJ 设置</h3>
+          <div class="setting-item">
+            <span>语音播报</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggleTTS">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          <div class="setting-item">
+            <span>主动推荐</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggleProactive" checked>
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <div class="settings-group">
+          <h3>关于</h3>
+          <p class="about-text">
+            MusicAgent v1.0<br>
+            你的私人 AI DJ<br>
+            理解品味 · 规划音乐 · DJ 播报
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- 底部聊天输入 + 导航 -->
+    <div class="chat-input-area">
+      <div class="chat-input-wrapper">
+        <input type="text" id="chatInput" placeholder="和 AI DJ 说点什么..." autocomplete="off">
+        <button class="btn-send" id="btnSend">→</button>
+      </div>
+    </div>
+
+    <!-- 底部导航 -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-view="player">
+        <span class="nav-icon">🎵</span>
+        <span class="nav-label">播放</span>
+      </button>
+      <button class="nav-item" data-view="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">档案</span>
+      </button>
+      <button class="nav-item" data-view="settings">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">设置</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 隐藏的 Audio 元素 -->
+  <audio id="audioPlayer" preload="auto"></audio>
+
+  <script src="/app.js"></script>
+</body>
+</html>
