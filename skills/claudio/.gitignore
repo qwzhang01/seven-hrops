@@ -1,7 +1,0 @@
-node_modules/
-.env
-data/state.db
-data/cache/
-dist/
-*.log
-.DS_Store
