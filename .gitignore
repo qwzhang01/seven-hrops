@@ -64,3 +64,5 @@ opencode
 package-lock.json
 
 .ext.env
+
+.agent
